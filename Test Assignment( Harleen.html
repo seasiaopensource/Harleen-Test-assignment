@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test Assignment</title>
+</head>
+<body>
+<div class="outer">
+	<a class="clip_link" href="#" style="float: right;"  onclick="selectAndCopyTable( document.getElementById('table') );">Copy to Clipboard</a>
+
+	<table id="table" cellpadding="5" cellspacing="0" border="1" class="data reports_table" >
+		<tr>
+			<th>Owner</th>
+			<th>Position</th>
+			<th>Main Email</th>
+			<th>Alternate Email</th>
+		</tr>
+		<tr>
+			<td>owner-1</td>
+			<td>v1</td>
+			<td>v1@date-1.com</td>
+			<td>v1@date-2.com</td>
+		</tr>
+		<tr>
+			<td>owner-2</td>
+			<td>v2</td>
+			<td>v2@date-1.com</td>
+			<td>v2@date-2.com</td>
+		</tr>
+		<tr>
+			<td>owner-3</td>
+			<td>v3</td>
+			<td>v3@date-1.com</td>
+			<td>v3@date-2.com</td>
+		</tr>
+		<tr>
+			<td>owner-4</td>
+			<td>v4</td>
+			<td>v4@date-1.com</td>
+			<td>v4@date-2.com</td>
+		</tr>
+		<tr>
+			<td>owner-5</td>
+			<td>v5</td>
+			<td>v5@date-1.com</td>
+			<td>v5@date-2.com</td>
+		</tr>
+
+	</table>
+</div>
+<style type="text/css">
+a.clip_link {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #06D755;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.outer {
+    width: 40%;
+    }
+</style>
+<script type="text/javascript">
+function selectAndCopyTable(event) {
+    var body = document.body, range, selection;
+    if (document.createRange && window.getSelection) {
+        range = document.createRange(); // create range object
+        selection = window.getSelection(); // get the range of content selected 
+        selection.removeAllRanges(); // removes all the prevous selection
+        try { // try block
+            range.selectNodeContents(event); // sets the range to contain the contents of a node
+            selection.addRange(range);
+        } catch (e) { // error handeling
+            range.selectNode(event); // sets the range to contain the node and its contents
+            selection.addRange(range);
+        }
+	} 
+	document.execCommand('copy'); //execute copy command
+	alert("Table Data is copied to clipboard");
+}
+
+</script>
+</body>
+</html>
